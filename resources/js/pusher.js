@@ -21,4 +21,9 @@ console.log("✅ WebSocket Setup Completed");
 window.Echo.channel("playground")
     .listen(".PlaygroundEvent", (e) => {
         console.log("📢 WebSocket Event Received:", e);
+        if (typeof Livewire !== "undefined") {
+            Livewire.emit('incrementCounter'); // ✅ Correct for Livewire 2
+        } else {
+            console.warn("⚠️ Livewire is not available yet!");
+        }
     });
