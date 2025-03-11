@@ -26,3 +26,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('/playground', function () {
+    event(new App\Events\Playground('Hello World'));
+    return 'Event fired!';
+});
